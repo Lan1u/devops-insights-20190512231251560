@@ -10,12 +10,12 @@ var request = REQUEST.defaults( {
 var OPENWEATHERURL = "http://api.openweathermap.org/data/2.5/weather?appid=6b7b471967dd0851d0010cdecf28f829&units=metric";
 
 exports.getWeather = function(req, res) {
-	var zip = req.query.zip;
-	if( (zip === null) || (typeof(zip) === 'undefined') ) {
-		return res.status(400).send('zip missing');
+	var name = req.query.name;
+	if( (name === null) || (typeof(name) === 'undefined') ) {
+		return res.status(400).send('city missing');
 	}
 
-	var aurl = OPENWEATHERURL + '&zip=' + zip + ',us';
+	var aurl = OPENWEATHERURL + '&q=' + name + ',nz';
 
 	request({
 		method: 'GET',
